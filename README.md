@@ -10,9 +10,7 @@
 
 ### Что делает скрипт?
 Локально подменяет мое отображаемое имя в сервисах Т-Банка. Текущий список:
-- Браузерная версия TiMe
-- Jira
-- Confluence
+- Браузерная версия TiMe (тегать меня в тредах можно через `@yan.logan` и `@yanlogan`, я увижу уведомление')
 
 ### Как установить
 1. Установите расширение [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) и влючите его
