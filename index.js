@@ -41,7 +41,7 @@
     ];
 
     const replaceName = (element) => {
-      if (element && typeof element.innerHTML === "string" && element.innerText?.includes(defaultName)) {
+      if (element && element.innerText && element.innerText.includes(defaultName)) {
         element.innerHTML = element.innerHTML.replace(defaultName, changedName);
       }
     };
@@ -50,6 +50,7 @@
     const processNode = (node) => {
       if (!(node instanceof HTMLElement)) return;
 
+      // TODO: убрать лог
       console.log(`Node ${node} is processing`);
 
       if (node.matches(selectors.join(", "))) {
@@ -60,6 +61,13 @@
 
     // process existing elements
     document.querySelectorAll(selectors.join(", ")).forEach(replaceName);
+
+    let debounceTimer;
+    debounceTimer = setTimeout(() => {
+      document.querySelectorAll(selectors.join(", ")).forEach(replaceName);
+    }, 100);
+    clearTimeout(debounceTimer);
+
 
     // observe only changed elements
     const observer = new MutationObserver((mutationsList) => {
