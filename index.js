@@ -50,6 +50,8 @@
     const processNode = (node) => {
       if (!(node instanceof HTMLElement)) return;
 
+      console.log(`Node ${node} is processing`);
+
       if (node.matches(selectors.join(", "))) {
         replaceName(node);
       }
