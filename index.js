@@ -53,53 +53,44 @@
     }
 
     // process only matched elements
-    // const processNode = (node) => {
-    //   if (!(node instanceof HTMLElement)) return;
+    const processNode = (node) => {
+      if (!(node instanceof HTMLElement)) return;
 
-    //   // TODO: убрать лог
-    //   console.log(`Node ${node} is processing`);
-
-    //   if (node.matches(selectors.join(", "))) {
-    //     replaceName(node);
-    //   }
-    //   node.querySelectorAll(selectors.join(", ")).forEach(replaceName);
-    // };
-
-    // process existing elements
-    processElements();
-
-    // let debounceTimer;
-    // debounceTimer = setTimeout(() => {
-    //   document.querySelectorAll(selectors.join(", ")).forEach(replaceName);
-    // }, 100);
-    // clearTimeout(debounceTimer);
+      if (node.matches(selectors.join(", "))) {
+        replaceName(node);
+      }
+      node.querySelectorAll(selectors.join(", ")).forEach(replaceName);
+    };
 
     let debounceTimer;
     const debouncedProcess = () => {
       clearTimeout(debounceTimer);
-      debounceTimer = setTimeout(processElements, 100); // 100 мс – можно поэкспериментировать с задержкой
+      debounceTimer = setTimeout(processElements, 50);
     };
+
+    // process existing elements
+    processElements();
+    debouncedProcess();
 
 
     // observe only changed elements
-    // const observer = new MutationObserver((mutationsList) => {
-    //   mutationsList.forEach((mutation) => {
-    //     if (mutation.type === "childList" && mutation.addedNodes.length > 0) {
-    //       Array.from(mutation.addedNodes).forEach(processNode);
-    //     }
+    const observer = new MutationObserver((mutationsList) => {
+      mutationsList.forEach((mutation) => {
+        if (mutation.type === "childList" && mutation.addedNodes.length > 0) {
+          Array.from(mutation.addedNodes).forEach(processNode);
+        }
 
-    //     if (mutation.type === "characterData") {
-    //       const parent = mutation.target.parentElement;
+        if (mutation.type === "characterData") {
+          const parent = mutation.target.parentElement;
 
-    //       if (parent && parent.matches(selectors)) {
-    //         replaceName(parent);
-    //       }
-    //     }
-    //   });
-    // });
-    
+          if (parent && parent.matches(selectors)) {
+            replaceName(parent);
+          }
+        }
+      });
+    });
 
-    const observer = new MutationObserver(debouncedProcess);
+    // const observer = new MutationObserver(debouncedProcess);
 
     observer.observe(document.body, {
       childList: true,
