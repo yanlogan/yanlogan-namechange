@@ -31,12 +31,13 @@
       '.channel-intro-text span', // текст интро на странице личного чата
       '[data-testid="profile-header-username"]', // имя в info
       '[data-testid="post_textbox_placeholder"]', // плейсхолдер в личныом чате
-      '.post__header button', // заголовок в постах и комменатах
+      '.post__header', // заголовок в постах и комменатах
       '.post__body', // текст в постах
       '.user-profile-popover__name', // имя в карточке юзера
       '.suggestion-list__item span.ml-2', // имя в подсказках при теге
       '.sidebar--right__title__channel', // заголовок треда в правом сайдбаре
       '[data-qa="user_full_name"]', // имя в меню профиля
+      '.ThreadItem h1' // заголовок на вкладке тредов
     ];
 
     const replaceName = (element) => {
