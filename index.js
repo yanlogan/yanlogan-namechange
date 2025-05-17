@@ -32,15 +32,15 @@
       '[data-testid="profile-header-username"]', // имя в info
       '#post_textbox', // плейсхолдер в личном чате
       '.post__header .col__name', // заголовок в постах и комменатах
-      '.post__body', // текст в постах
+      //'.post__body', // текст в постах
+      '.post-preview__header .user-popover', // заголовок в превью треда
       '.user-profile-popover__name', // имя в карточке юзера
       '.suggestion-list__item span.ml-2', // имя в подсказках при теге
       '.sidebar--right__title__channel', // заголовок треда в правом сайдбаре
       '[data-qa="user_full_name"]', // имя в меню профиля
       '.ThreadItem h1', // заголовок на вкладке тредов
       '.channel-intro__content', // интро в канале
-      '[data-testid="rigth_sidebar.members_container"]', // в участниках канала
-      '.post-preview__header', // в превью треда
+      '[data-testid="rigth_sidebar.members_container"] [class^="DisplayName"]', // в участниках канала
       '[data-testid="groupMemberRow"]', // в карточке группы юзеров
       'more-modal__name', // в участниках группы юзеров
       '[data-testid="autocomplete-succeed-view"]', // в подсказках
