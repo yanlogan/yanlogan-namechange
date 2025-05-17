@@ -39,12 +39,12 @@
       '[data-qa="user_full_name"]', // имя в меню профиля
       '.ThreadItem h1', // заголовок на вкладке тредов
       '.channel-intro__content', // интро в канале
-      '[data-testid="rigth_sidebar.members_container]', // в участниках канала
+      '[data-testid="rigth_sidebar.members_container"]', // в участниках канала
       '.post-preview__header', // в превью треда
       '[data-testid="groupMemberRow"]', // в карточке группы юзеров
       'more-modal__name', // в участниках группы юзеров
       '[data-testid="autocomplete-succeed-view"]', // в подсказках
-      '.mention--highlight', // в списке тредов в меншнах
+      '.mention--highlight' // в списке тредов в меншнах
       // TODO: найти упомининания @s.v.fokina
     ];
 
