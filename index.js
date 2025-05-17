@@ -30,8 +30,8 @@
       '.channel-intro-profile button', // заголовок интро на странице личного чата
       '.channel-intro-text span', // текст интро на странице личного чата
       '[data-testid="profile-header-username"]', // имя в info
-      '[data-testid="post_textbox_placeholder"]', // плейсхолдер в личныом чате
-      '.post__header', // заголовок в постах и комменатах
+      '#post_textbox', // плейсхолдер в личном чате
+      '.post__header .col__name', // заголовок в постах и комменатах
       '.post__body', // текст в постах
       '.user-profile-popover__name', // имя в карточке юзера
       '.suggestion-list__item span.ml-2', // имя в подсказках при теге
@@ -52,8 +52,26 @@
     // BUG: крашится вкладка, попробовать через innerText
 
     const replaceName = (element) => {
-      if (element && element.innerText && element.innerText.includes(defaultName)) {
-        element.innerText = element.innerText.replace(defaultName, changedName);
+      if (element) {
+        if (element.childNodes.length !== 0 ) {
+          const childNodes = Array.from(element.childNodes);
+          if (element.innerText && element.innerText.includes(defaultName)) {
+            const textNodes = childNodes.filter(node => node.nodeType === Node.TEXT_NODE && node.textContent.includes(defaultName));
+            textNodes.map(node => {
+              node.textContent = node.textContent.replace(defaultName, changedName);
+            })
+            const regularNodes = childNodes.filter(node => node.nodeType === Node.ELEMENT_NODE && node.textContent.includes(defaultName));
+            regularNodes.map(node => {
+              node.innerText = node.innerText.replace(defaultName, changedName);
+            });
+          }
+          if (element.dataset && element.dataset.placeholder && element.dataset.placeholder.includes(defaultName)) {
+            childNodes.map(node => {
+              node.dataset.placeholder = node.dataset.placeholder.replace(defaultName, changedName);
+            })
+          }
+
+        }
       }
     };
 
