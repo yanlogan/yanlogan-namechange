@@ -53,7 +53,7 @@
 
     const replaceName = (element) => {
       if (element && element.innerText && element.innerText.includes(defaultName)) {
-        element.innerHTML = element.innerHTML.replace(defaultName, changedName);
+        element.innerText = element.innerText.replace(defaultName, changedName);
       }
     };
 
