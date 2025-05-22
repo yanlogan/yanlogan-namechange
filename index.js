@@ -44,7 +44,8 @@
       '[data-testid="groupMemberRow"]', // в карточке группы юзеров
       'more-modal__name', // в участниках группы юзеров
       '[data-testid="autocomplete-succeed-view"]', // в подсказках
-      '.mention--highlight' // в списке тредов в меншнах
+      '.mention--highlight', // в списке тредов в меншнах
+      '.quote-message' // в цитатах
       // TODO: найти упомининания @s.v.fokina
     ];
 
